@@ -1,16 +1,23 @@
 <template>
-  <div class="convs-card">
-    <!-- Display event data -->
-    <span> @ {{ project.investigador }} in {{ project.disciplina }}</span>
-    <h4>{{ project.title }}</h4>
-  </div>
+  <router-link
+    class="project-link"
+    :to="{ name: 'ProjectDetails', params: { id: project.id } }"
+  >
+    <div class="convs-card">
+      <!-- Display event data -->
+      <span> @ {{ project.investigador }} in {{ project.disciplina }}</span>
+      <h4>{{ project.title }}</h4>
+    </div>
+  </router-link>
 </template>
 
 <script>
 export default {
-  name: 'ConvsCard',
   props: {
-    project: Object,
+    project: {
+      type: Object,
+      required: true,
+    },
   },
 }
 </script>
@@ -27,5 +34,10 @@ export default {
 .convs-card:hover {
   transform: scale(1.01);
   box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+.project-link {
+  color: #2c3e50;
+  text-decoration: none;
 }
 </style>
